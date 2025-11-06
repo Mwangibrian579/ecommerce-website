@@ -63,14 +63,15 @@ $cart_summary = $cart->getCartSummary();
             <div id="branding">
                 <h1><span class="highlight">Tech</span>Store</h1>
             </div>
-            <nav>
+<nav>
     <ul>
         <li><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact</a></li>
         <?php if(isset($_SESSION['user_id'])): ?>
-            <li><a href="profile.php">My Profile</a></li>
+            <li class="current"><a href="profile.php">My Profile</a></li>
+            <li><a href="orders.php">My Orders</a></li>
             <li><a href="cart.php">Cart 
                 <?php 
                 if(isset($_SESSION['user_id'])) {

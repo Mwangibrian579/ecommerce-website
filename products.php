@@ -28,12 +28,13 @@ $products = $search_keywords ? $product->search($search_keywords) : $product->re
             </div>
 <nav>
     <ul>
-        <li><a href="index.php">Home</a></li>
+        <li class="current"><a href="index.php">Home</a></li>
         <li><a href="products.php">Products</a></li>
         <li><a href="about.php">About</a></li>
         <li><a href="contact.php">Contact</a></li>
         <?php if(isset($_SESSION['user_id'])): ?>
             <li><a href="profile.php">My Profile</a></li>
+            <li><a href="orders.php">My Orders</a></li>
             <li><a href="cart.php">Cart 
                 <?php 
                 if(isset($_SESSION['user_id'])) {

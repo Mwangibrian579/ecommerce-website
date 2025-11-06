@@ -142,8 +142,9 @@ if($payment_method == 'mpesa') {
                     <li><a href="products.php">Products</a></li>
                     <li><a href="about.php">About</a></li>
                     <li><a href="contact.php">Contact</a></li>
-                    <li><a href="profile.php">My Profile</a></li>
-                    <li><a href="cart.php">Cart (<?php echo $cart_summary['total_items']; ?>)</a></li>
+             <li><a href="profile.php">My Profile</a></li>
+            <li><a href="orders.php">My Orders</a></li>
+            <li><a href="cart.php">Cart 
                     <li><a href="logout.php">Logout (<?php echo $_SESSION['username']; ?>)</a></li>
                 </ul>
             </nav>
