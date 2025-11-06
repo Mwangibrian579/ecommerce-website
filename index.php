@@ -75,6 +75,43 @@ $featured_products = $product->readFeatured();
         </div>
     </section>
 
+    <!-- Categories Section -->
+<section id="categories">
+    <div class="container">
+        <h2>Shop by Category</h2>
+        <div class="categories-grid">
+            <?php
+            $categories_query = "SELECT * FROM categories WHERE parent_id IS NULL ORDER BY name";
+            $categories_stmt = $db->prepare($categories_query);
+            $categories_stmt->execute();
+            
+            while ($category = $categories_stmt->fetch(PDO::FETCH_ASSOC)):
+                // Count products in category
+                $count_query = "SELECT COUNT(*) as product_count FROM products WHERE category_id = ?";
+                $count_stmt = $db->prepare($count_query);
+                $count_stmt->bindParam(1, $category['id']);
+                $count_stmt->execute();
+                $product_count = $count_stmt->fetch(PDO::FETCH_ASSOC)['product_count'];
+            ?>
+            <a href="products.php?category=<?php echo $category['id']; ?>" class="category-card">
+                <div class="category-icon">
+                    <?php 
+                    // Simple icon based on category name
+                    $icon = '💻'; // default
+                    if(stripos($category['name'], 'laptop') !== false) $icon = '💻';
+                    elseif(stripos($category['name'], 'accessory') !== false) $icon = '⌨️';
+                    elseif(stripos($category['name'], 'component') !== false) $icon = '🔧';
+                    echo $icon;
+                    ?>
+                </div>
+                <h3><?php echo $category['name']; ?></h3>
+                <p><?php echo $product_count; ?> products</p>
+            </a>
+            <?php endwhile; ?>
+        </div>
+    </div>
+</section>
+
     <section id="featured-products">
         <div class="container">
             <h2>Featured Products</h2>
